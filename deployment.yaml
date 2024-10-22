@@ -20,7 +20,7 @@ spec:
       terminationGracePeriodSeconds: 50
       containers:
         - name: {{LABELS}}
-          image: acr.cqrb.cn/{{IMG_NAMESPECE}}/{{CI_PROJECT_NAME}}:latest
+          image: acr.cqrb.cn/{{IMG_NAMESPECE}}/{{CI_PROJECT_NAME}}:{{TAG}}
           imagePullPolicy: Always
           env:
             - name: CONFIGHOST
