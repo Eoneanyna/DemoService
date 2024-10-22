@@ -4,6 +4,7 @@ import (
 	"context"
 	"demoserveice/internal/conf"
 	"demoserveice/internal/service"
+	"fmt"
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/middleware/logging"
 	"github.com/go-kratos/kratos/v2/middleware/recovery"
@@ -74,5 +75,6 @@ func initTracer(ctx context.Context) error {
 		)),
 	)
 	otel.SetTracerProvider(tp)
+	fmt.Println("initTracer ok")
 	return nil
 }
