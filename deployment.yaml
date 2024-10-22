@@ -84,29 +84,6 @@ spec:
         - name: acr.cqrb.cn
 
 ---
-# HPA
-apiVersion: autoscaling/v2beta1
-kind: HorizontalPodAutoscaler
-metadata:
-  name: {{LABELS}}-hpa
-  namespace: {{NAMESPECE}}
-spec:
-  scaleTargetRef:                             ##绑定名为nginx的Deployment。
-    apiVersion: apps/v1
-    kind: Deployment
-    name: {{LABELS}}-deployment
-  minReplicas: {{POD_NUM}}
-  maxReplicas: 150
-  metrics:
-    - type: Resource
-      resource:
-        name: memory
-        targetAverageUtilization: 60
-    - type: Resource
-      resource:
-        name: cpu
-        targetAverageUtilization: 60
----
 apiVersion: v1
 kind: PersistentVolume
 metadata:
