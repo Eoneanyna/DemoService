@@ -1,0 +1,145 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{LABELS}}-deployment
+  namespace: {{NAMESPECE}}
+  labels:
+    app: {{LABELS}}
+spec:
+  replicas: {{POD_NUM}}
+  selector:
+    matchLabels:
+      app: {{LABELS}}
+  template:
+    metadata:
+      labels:
+        app: {{LABELS}}
+      annotations:
+        alibabacloud.com/burst-resource: eci #添加注解，选择弹性调度的资源类型
+    spec:
+      terminationGracePeriodSeconds: 50
+      containers:
+        - name: {{LABELS}}
+          image: acr.cqrb.cn/{{IMG_NAMESPECE}}/{{CI_PROJECT_NAME}}:latest
+          imagePullPolicy: Always
+          env:
+            - name: CONFIGHOST
+              value: "{{CONFIGHOST}}"
+            - name: NAMESPACE
+              value: "{{NAMESPECE}}"
+          securityContext:
+            runAsNonRoot: true
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+          readinessProbe:
+            httpGet:
+              port: {{PORT}}
+              path: /checkHealth
+            initialDelaySeconds: 1
+            periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /checkHealth
+              port: {{PORT}}
+            initialDelaySeconds: 20
+            successThreshold: 1
+            periodSeconds: 5
+            failureThreshold: 3
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/sh","-c","sleep 20s"]
+          command: ["/bin/sh", "-c","chmod -R 777  /app/logs;./{{CI_PROJECT_NAME}}"]
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: 1000m
+              memory: 1024Mi
+          ports:
+            - containerPort: {{PORT}}
+            - containerPort: 9000
+          volumeMounts:
+            - name: pv-{{LABELS}}
+              subPath: logs
+              mountPath: "/app/logs"
+      initContainers:
+        - name: init-config
+          image: acr.cqrb.cn/develop/shangyou_go_image
+          imagePullPolicy: Always
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+          command: ["/bin/sh", "-c","mkdir /app/logs; chmod -R 777 /app/logs"]
+          volumeMounts:
+            - name: pv-{{LABELS}}
+              subPath: logs
+              mountPath: "/app/logs"
+      volumes:
+        - name: pv-{{LABELS}}
+          persistentVolumeClaim:
+            claimName: pvc-{{LABELS}}
+      imagePullSecrets:
+        - name: acr.cqrb.cn
+
+---
+# HPA
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{LABELS}}-hpa
+  namespace: {{NAMESPECE}}
+spec:
+  scaleTargetRef:                             ##绑定名为nginx的Deployment。
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{LABELS}}-deployment
+  minReplicas: {{POD_NUM}}
+  maxReplicas: 150
+  metrics:
+    - type: Resource
+      resource:
+        name: memory
+        targetAverageUtilization: 60
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 60
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-{{LABELS}}-{{NAMESPECE}}
+  namespace: {{NAMESPECE}}
+  labels:
+    alicloud-pvname: pv-{{LABELS}}-{{NAMESPECE}}
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  csi:
+    driver: nasplugin.csi.alibabacloud.com
+    volumeHandle: pv-nas
+    volumeAttributes:
+      server: {{NASSERVER}}
+      path: "/{{CI_PROJECT_NAME}}"
+  mountOptions:
+    - nolock,tcp,noresvport
+    - vers=3
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc-{{LABELS}}
+  namespace: {{NAMESPECE}}
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      alicloud-pvname: pv-{{LABELS}}-{{NAMESPECE}}

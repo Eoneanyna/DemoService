@@ -1,0 +1,40 @@
+server:
+  http:
+    addr: 0.0.0.0:7309
+    timeout: 30s
+  grpc:
+    addr: 0.0.0.0:8309
+    timeout: 30s
+  registry:
+    addr: 172.30.8.215
+    port: 8848
+    namespace: develop
+    loglevel: debug
+data:
+  database:
+    driver: mysql
+    source: shangyou:Shangyou123456*@tcp(pc-bp1caml7dx29g7q5r.rwlb.rds.aliyuncs.com:3306)/shangyou
+    source1: shangyou:Shangyou123456*@tcp(pc-bp1caml7dx29g7q5r.rwlb.rds.aliyuncs.com:3306)/shangyou_1
+    logprefix: db-news-service
+  redis:
+    addr: r-bp1cd14bd6e6b554.redis.rds.aliyuncs.com:6379
+    password: Rb2vrlmm
+    read_timeout: 0.2s
+    write_timeout: 0.2s
+reporter:
+  is_report: false
+  systemid: 22
+  endpoint: 192.168.181.63:8014
+channel:
+  api: 192.168.184.8:8202/api50.html
+  api_redis_key: api_enewspage_api50
+  web: 192.168.184.8:8202/web50.html
+  web_redis_key: api_enewspage_web50
+  small: 192.168.181.104/xiaochenxu.html
+  small_redis_key: api_enewspage_xiaochenxu
+  interview_channel_id: 17,18,35
+wechat:
+  share_ips: 127.0.0.1
+domain:
+  wap: https://dev.cqcb.com  
+

@@ -1,0 +1,64 @@
+syntax = "proto3";
+package kratos.api;
+
+option go_package = "demoserveice/internal/conf;conf";
+
+import "google/protobuf/duration.proto";
+
+message Bootstrap {
+  Server server = 1;
+  Data data = 2;
+  Reporter reporter =3;
+}
+
+message Server {
+  message HTTP {
+    string network = 1;
+    string addr = 2;
+    google.protobuf.Duration timeout = 3;
+  }
+  message GRPC {
+    string network = 1;
+    string addr = 2;
+    google.protobuf.Duration timeout = 3;
+  }
+  message Registry {
+    string addr = 1 ;
+    uint64 port = 2 ;
+    string namespace = 3 ;
+    string loglevel = 4 ;
+  }
+  message LoggerRegistry {
+    string addr = 1 ;
+    uint64 port = 2 ;
+    string namespace = 3 ;
+    string loglevel = 4 ;
+  }
+  HTTP http = 1;
+  GRPC grpc = 2;
+  Registry registry = 3;
+  LoggerRegistry logger_registry = 4;
+}
+
+message Data {
+  message Database {
+    string driver = 1;
+    string source = 2;
+    string logprefix = 3;
+  }
+  message Redis {
+    string network = 1;
+    string addr = 2;
+    string password = 3;
+    google.protobuf.Duration read_timeout = 4;
+    google.protobuf.Duration write_timeout = 5;
+  }
+  Database database = 1;
+  Redis redis = 2;
+}
+
+message Reporter {
+  bool is_report = 1;
+  int32 systemid = 2;
+  string endpoint = 3;
+}
