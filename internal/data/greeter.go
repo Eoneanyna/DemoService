@@ -3,9 +3,7 @@ package data
 import (
 	"context"
 	"demoserveice/internal/biz"
-	"errors"
 	"github.com/go-kratos/kratos/v2/log"
-	"gitlab.cqrb.cn/shangyou_mic/kit/errors_ez"
 )
 
 type greeterRepo struct {
@@ -22,8 +20,8 @@ func NewGreeterRepo(data *Data, logger log.Logger) biz.GreeterRepo {
 }
 
 func (r *greeterRepo) CreateGreeter(ctx context.Context, g *biz.Greeter) error {
-	err := errors.New("serverce err")
-	return errors_ez.Wap(err)
+	//err := errors.New("serverce err")
+	return nil
 }
 
 func (r *greeterRepo) UpdateGreeter(ctx context.Context, g *biz.Greeter) error {

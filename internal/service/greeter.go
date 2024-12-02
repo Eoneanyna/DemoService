@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"demoserveice/internal/biz"
+	"fmt"
 	"github.com/go-kratos/kratos/v2/errors"
 	"github.com/go-kratos/kratos/v2/log"
 	v1 "gitlab.cqrb.cn/shangyou_mic/testpg/api/demoserveice/v1"
@@ -23,7 +24,7 @@ func NewGreeterService(uc *biz.GreeterUsecase, logger log.Logger) *GreeterServic
 
 // SayHello implements helloworld.GreeterServer
 func (s *GreeterService) SayHello(ctx context.Context, in *v1.HelloRequest) (*v1.HelloReply, error) {
-	s.log.WithContext(ctx).Infof("SayHello Received: %v", in.GetName())
+	fmt.Println("SayHello Received: %v", in.GetName())
 	err := s.uc.Create(ctx, &biz.Greeter{Hello: "222"})
 	if err != nil {
 		return nil, errors.New(500, err.Error(), err.Error())

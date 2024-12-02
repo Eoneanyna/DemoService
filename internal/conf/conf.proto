@@ -9,6 +9,7 @@ message Bootstrap {
   Server server = 1;
   Data data = 2;
   Reporter reporter =3;
+  Tracer   tracer =4;
 }
 
 message Server {
@@ -60,5 +61,8 @@ message Data {
 message Reporter {
   bool is_report = 1;
   int32 systemid = 2;
+  string endpoint = 3;
+}
+message Tracer{
   string endpoint = 3;
 }
