@@ -1,5 +1,5 @@
 # 构建：使用golang:1.16版本
-FROM acr.cqrb.cn/develop/golang:1.22.6 as build
+FROM acr.cqrb.cn/develop/golang:1.22.9 as build
 ARG CI_PROJECT_NAME
 ARG GIT_TOKEN
 ARG ENVER
