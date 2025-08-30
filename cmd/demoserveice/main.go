@@ -2,6 +2,7 @@ package main
 
 import (
 	"demoserveice/internal/conf"
+	kitlog "demoserveice/pkg/log"
 	"flag"
 	"fmt"
 	config "github.com/go-kratos/kratos/contrib/config/nacos/v2"
@@ -14,8 +15,7 @@ import (
 	"github.com/nacos-group/nacos-sdk-go/clients"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
-	kitlog "gitlab.cqrb.cn/shangyou_mic/kit/log"
-	"gitlab.cqrb.cn/shangyou_mic/kit/reporter"
+
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/yaml.v3"
@@ -112,7 +112,9 @@ func main() {
 	//读取配置文件
 	confighost := os.Getenv("CONFIGHOST")
 	if confighost == "" {
-		panic("请先设置配置中心地址")
+		confighost = "localhost" // 默认值
+		fmt.Println("使用默认配置主机:", confighost)
+		//panic("请先设置配置中心地址")
 	}
 	Namespace := os.Getenv("NAMESPACE")
 	if Namespace == "" {
@@ -157,16 +159,22 @@ func main() {
 		panic(err)
 	}
 	//钉钉报错配置
-	if bc.Reporter.IsReport && bc.Reporter.Systemid != 0 {
-		rpo := reporter.NewRepoter(bc.Reporter.Systemid, bc.Reporter.Endpoint)
-		logger.WithReporter(rpo)
-	}
+
 	//日志收集服务初始化 namespace 为mq所在的命名空间(develop|testing|production), 与当前命名空间不一致时，需要修改
 
 	if err != nil {
 		panic(err)
 	}
 
+	//var dtmServer = "172.29.106.203:3679"
+	//gid := dtmgrpc.MustGenGid("172.29.106.203:36790")
+	//var busiServer = "discovery:///busi"
+	//m := dtmgrpc.NewMsgGrpc(dtmServer, gid).
+	//	Add(busiServer+"/api.trans.v1.Trans/TransOut", &busi.BusiReq{Amount: 30, UserId: 1}).
+	//	Add(busiServer+"/api.trans.v1.Trans/TransIn", &busi.BusiReq{Amount: 30, UserId: 2})
+	//m.WaitResult = true
+	//err := m.Submit()
+	//fmt.Println(gid)
 	fmt.Println("http端口", bc.Server.Http.Addr)
 	fmt.Println("grpc端口", bc.Server.Grpc.Addr)
 	app, cleanup, err := initApp(bc.Server, bc.Data, logger)

@@ -26,7 +26,7 @@ RUN go mod tidy
 # 编译：把cmd/main.go编译成可执行的二进制文件，命名为app
 
 RUN cd ./cmd/${CI_PROJECT_NAME}&& GOOS=linux CGO_ENABLED=0 GOARCH=amd64 go build -ldflags="-s -w" -installsuffix cgo -o ${CI_PROJECT_NAME} ./...
-# 运行：使用alpine作为基础镜像
+# 运行：使用alpine作为基础
 FROM acr.cqrb.cn/develop/shangyou_go_image
 ARG CI_PROJECT_NAME
 # 在build阶段复制时区到

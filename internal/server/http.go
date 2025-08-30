@@ -3,12 +3,12 @@ package server
 import (
 	"demoserveice/internal/conf"
 	"demoserveice/internal/service"
+	"demoserveice/middleware/validate"
+	"demoserveice/pkg/encode"
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/middleware/logging"
 	"github.com/go-kratos/kratos/v2/middleware/recovery"
 	"github.com/go-kratos/kratos/v2/transport/http"
-	"gitlab.cqrb.cn/shangyou_mic/kit/encode"
-	"gitlab.cqrb.cn/shangyou_mic/kit/middleware/validate"
 	v1 "gitlab.cqrb.cn/shangyou_mic/testpg/api/demoserveice/v1"
 )
 

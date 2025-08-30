@@ -2,10 +2,10 @@ package data
 
 import (
 	"demoserveice/internal/conf"
+	gormlog "demoserveice/pkg/log"
 	"errors"
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/google/wire"
-	gormlog "gitlab.cqrb.cn/shangyou_mic/kit/log"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	logleve "gorm.io/gorm/logger"

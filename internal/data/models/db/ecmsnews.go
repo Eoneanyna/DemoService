@@ -6,9 +6,10 @@ import (
 )
 
 type Ecmsnews struct {
-	Id       int32 `gorm:"primary_key;column:id"`
-	ClassId  int32 `gorm:"column:classid"`
-	NewsTime int32 `gorm:"column:newstime"`
+	Id       int32  `gorm:"primary_key;column:id"`
+	ClassId  int32  `gorm:"column:classid"`
+	NewsTime int32  `gorm:"column:newstime"`
+	Content  string `gorm:"column:Content"`
 }
 
 func (Ecmsnews) TableName() string {

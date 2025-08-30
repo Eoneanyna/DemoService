@@ -1,13 +1,12 @@
 package data
 
 import (
-	"context"
 	"demoserveice/internal/conf"
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/nacos-group/nacos-sdk-go/clients"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
-	pb "gitlab.cqrb.cn/shangyou_mic/mq-service-pb/rocket_mq"
+
 	"google.golang.org/grpc"
 )
 
@@ -47,11 +46,11 @@ type MqData struct {
 	Key   string
 }
 
-func (m *MQClient) SendMq(ctx context.Context, data *MqData) (res *pb.ProduceRepley, err error) {
-	mq := pb.NewProduceClient(m.client)
-	return mq.Produce(ctx, &pb.ProduceRequest{
-		Topic: data.Topic,
-		Msg:   data.Msg,
-		Key:   data.Key,
-	})
-}
+//func (m *MQClient) SendMq(ctx context.Context, data *MqData) (res *pb.ProduceRepley, err error) {
+//	mq := pb.NewProduceClient(m.client)
+//	return mq.Produce(ctx, &pb.ProduceRequest{
+//		Topic: data.Topic,
+//		Msg:   data.Msg,
+//		Key:   data.Key,
+//	})
+//}

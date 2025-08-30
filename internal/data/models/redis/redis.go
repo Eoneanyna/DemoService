@@ -15,4 +15,9 @@ const (
 	channelTopCahceNamePre = "top:channelid:"
 	// 频道广告缓存名前缀
 	channelAdFirstCahceNamePre = "adfirst:channelid:"
+
+	// 新闻热点列表缓存名前缀
+	newsListCacheId = "list:hotSort"
+	// 新闻详情的一个hash列表
+	newsDetailCacheNamePre = "news:detail:"
 )

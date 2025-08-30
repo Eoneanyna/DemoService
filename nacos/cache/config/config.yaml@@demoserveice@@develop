@@ -1,29 +1,21 @@
 server:
   http:
-    addr: 0.0.0.0:7309
-    timeout: 30s
+    addr: 0.0.0.0:8000
+    timeout: 1s
   grpc:
-    addr: 0.0.0.0:8309
-    timeout: 30s
+    addr: 0.0.0.0:9000
+    timeout: 1s
   registry:
-    addr: 172.29.22.23
+    addr: localhost
     port: 8848
     namespace: develop
     loglevel: debug
 data:
   database:
     driver: mysql
-    source: shangyou:Shangyou123456*@tcp(pc-bp1caml7dx29g7q5r.rwlb.rds.aliyuncs.com:3306)/shangyou
-    source1: shangyou:Shangyou123456*@tcp(pc-bp1caml7dx29g7q5r.rwlb.rds.aliyuncs.com:3306)/shangyou_1
-    logprefix: db-news-service
+    source: root:123456@tcp(127.0.0.1:3306)/demo
+    logprefix: demoserveice
   redis:
-    addr: r-bp1cd14bd6e6b554.redis.rds.aliyuncs.com:6379
-    password: Rb2vrlmm
+    addr: 127.0.0.1:6379
     read_timeout: 0.2s
     write_timeout: 0.2s
-reporter:
-  is_report: false
-  systemid: 22
-  endpoint: 192.168.181.63:8014
-tracer:
-  endpoint: 172.29.123.193:4317

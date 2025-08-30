@@ -27,7 +27,8 @@ func initApp(confServer *conf.Server, confData *conf.Data, logger log.Logger) (*
 	greeterUsecase := biz.NewGreeterUsecase(greeterRepo, logger)
 	greeterService := service.NewGreeterService(greeterUsecase, logger)
 	httpServer := server.NewHTTPServer(confServer, greeterService)
-	grpcServer := server.NewGRPCServer(confServer, greeterService)
+	dataStreamService := service.NewDataStreamService()
+	grpcServer := server.NewGRPCServer(confServer, greeterService, dataStreamService)
 	app := newApp(logger, httpServer, grpcServer, confServer)
 	return app, func() {
 		cleanup()
