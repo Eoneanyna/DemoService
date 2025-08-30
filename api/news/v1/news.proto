@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package demoserveice.api.news.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "demoserveice/api/news/v1;v1";
+option java_multiple_files = true;
+
+// 新闻服务
+service NewsService {
+  // 根据ID获取新闻详情
+  rpc GetNewsById(GetNewsByIdRequest) returns (GetNewsByIdResponse) {
+    option (google.api.http) = {
+      get: "/v1/news/{id}"
+    };
+  }
+}
+
+// 根据ID获取新闻详情请求
+message GetNewsByIdRequest {
+  int32 id = 1;
+}
+
+// 根据ID获取新闻详情响应
+message GetNewsByIdResponse {
+  News news = 1;
+}
+
+// 新闻信息
+message News {
+  int32 id = 1;
+  int32 title = 2;
+  string content = 3;
+  int32 view_count = 4;
+  int32 create_time = 5;
+}

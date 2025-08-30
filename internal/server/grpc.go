@@ -1,6 +1,7 @@
 package server
 
 import (
+	v1 "demoserveice/api/news/v1"
 	"demoserveice/internal/conf"
 	"demoserveice/internal/service"
 	"github.com/go-kratos/kratos/v2/log"
@@ -13,7 +14,7 @@ import (
 )
 
 // NewGRPCServer new a gRPC server.
-func NewGRPCServer(c *conf.Server, getter *service.GreeterService, ds *service.DataStreamService) *grpc.Server {
+func NewGRPCServer(c *conf.Server, news *service.NewsService, getter *service.GreeterService, ds *service.DataStreamService) *grpc.Server {
 	var opts = []grpc.ServerOption{
 		grpc.Middleware(
 			recovery.Recovery(),
@@ -35,5 +36,6 @@ func NewGRPCServer(c *conf.Server, getter *service.GreeterService, ds *service.D
 	srv := grpc.NewServer(opts...)
 	v12.RegisterGreeterServer(srv, getter)
 	v12.RegisterDataStreamServer(srv, ds)
+	v1.RegisterNewsServiceServer(srv, news)
 	return srv
 }

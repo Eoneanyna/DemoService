@@ -6,6 +6,12 @@ type Redis struct {
 	Source *redis.Client
 }
 
+func NewRedis(source *redis.Client) *Redis {
+	return &Redis{
+		Source: source,
+	}
+}
+
 const (
 	// 频道列表缓存名前缀
 	channelListCahceNamePre = "list:channelid:"

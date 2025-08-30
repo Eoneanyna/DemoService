@@ -3,7 +3,7 @@ package data
 import (
 	"demoserveice/internal/conf"
 	"github.com/go-kratos/kratos/v2/log"
-	"github.com/go-redis/redis"
+	"github.com/redis/go-redis/v9"
 	"time"
 )
 

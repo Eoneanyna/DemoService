@@ -29,10 +29,18 @@ func (r *Redis) GetNewsDetailById(ctx context.Context, id int64) (db.News, error
 // SetNewsDetailById 刷新新闻详情
 func (r *Redis) SetNewsDetailById(ctx context.Context, news db.News) error {
 	rdb := r.Source
-	_, err := rdb.HSet(ctx, newsDetailCacheNamePre, fmt.Sprintf("%d", news.Id)).Result()
+	data, err := json.Marshal(news)
 	if err != nil {
 		return err
 	}
+
+	_, err = rdb.HSet(ctx, fmt.Sprintf("%s%d", newsDetailCacheNamePre, news.Id, data)).Result()
+	if err != nil {
+		return err
+	}
+
+	// TODO 设置过期时间
+	rdb.Expire(ctx, newsDetailCacheNamePre, 24*time.Hour)
 
 	return nil
 }
