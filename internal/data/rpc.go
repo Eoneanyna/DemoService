@@ -44,7 +44,7 @@ func NewGRPCClient(c *conf.Server, logger log.Logger) *GRPCClient {
 			ServerConfigs: sc,
 		},
 	)
-	conn, err := NewRpcConn(cli, "demoservice.grpc", "news")
+	conn, err := NewRpcConn(cli, "demoservice", "news")
 	if err != nil {
 		log.Error(err.Error())
 	}

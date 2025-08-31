@@ -193,11 +193,11 @@ var File_api_news_v1_news_proto protoreflect.FileDescriptor
 
 const file_api_news_v1_news_proto_rawDesc = "" +
 	"\n" +
-	"\x16api/news/v1/news.proto\x12\x18demoserveice.api.news.v1\x1a\x1cgoogle/api/annotations.proto\"$\n" +
+	"\x16api/news/v1/news.proto\x12\fdemoserveice\x1a\x1cgoogle/api/annotations.proto\"$\n" +
 	"\x12GetNewsByIdRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"I\n" +
-	"\x13GetNewsByIdResponse\x122\n" +
-	"\x04news\x18\x01 \x01(\v2\x1e.demoserveice.api.news.v1.NewsR\x04news\"\x86\x01\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"=\n" +
+	"\x13GetNewsByIdResponse\x12&\n" +
+	"\x04news\x18\x01 \x01(\v2\x12.demoserveice.NewsR\x04news\"\x86\x01\n" +
 	"\x04News\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x18\n" +
@@ -205,9 +205,9 @@ const file_api_news_v1_news_proto_rawDesc = "" +
 	"\n" +
 	"view_count\x18\x04 \x01(\x03R\tviewCount\x12\x1f\n" +
 	"\vcreate_time\x18\x05 \x01(\x03R\n" +
-	"createTime2\x91\x01\n" +
-	"\vNewsService\x12\x81\x01\n" +
-	"\vGetNewsById\x12,.demoserveice.api.news.v1.GetNewsByIdRequest\x1a-.demoserveice.api.news.v1.GetNewsByIdResponse\"\x15\x82\xd3\xe4\x93\x02\x0f\x12\r/v1/news/{id}B\x1fP\x01Z\x1bdemoserveice/api/news/v1;v1b\x06proto3"
+	"createTime2x\n" +
+	"\vNewsService\x12i\n" +
+	"\vGetNewsById\x12 .demoserveice.GetNewsByIdRequest\x1a!.demoserveice.GetNewsByIdResponse\"\x15\x82\xd3\xe4\x93\x02\x0f\x12\r/v1/news/{id}B\x1fP\x01Z\x1bdemoserveice/api/news/v1;v1b\x06proto3"
 
 var (
 	file_api_news_v1_news_proto_rawDescOnce sync.Once
@@ -223,14 +223,14 @@ func file_api_news_v1_news_proto_rawDescGZIP() []byte {
 
 var file_api_news_v1_news_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_api_news_v1_news_proto_goTypes = []any{
-	(*GetNewsByIdRequest)(nil),  // 0: demoserveice.api.news.v1.GetNewsByIdRequest
-	(*GetNewsByIdResponse)(nil), // 1: demoserveice.api.news.v1.GetNewsByIdResponse
-	(*News)(nil),                // 2: demoserveice.api.news.v1.News
+	(*GetNewsByIdRequest)(nil),  // 0: demoserveice.GetNewsByIdRequest
+	(*GetNewsByIdResponse)(nil), // 1: demoserveice.GetNewsByIdResponse
+	(*News)(nil),                // 2: demoserveice.News
 }
 var file_api_news_v1_news_proto_depIdxs = []int32{
-	2, // 0: demoserveice.api.news.v1.GetNewsByIdResponse.news:type_name -> demoserveice.api.news.v1.News
-	0, // 1: demoserveice.api.news.v1.NewsService.GetNewsById:input_type -> demoserveice.api.news.v1.GetNewsByIdRequest
-	1, // 2: demoserveice.api.news.v1.NewsService.GetNewsById:output_type -> demoserveice.api.news.v1.GetNewsByIdResponse
+	2, // 0: demoserveice.GetNewsByIdResponse.news:type_name -> demoserveice.News
+	0, // 1: demoserveice.NewsService.GetNewsById:input_type -> demoserveice.GetNewsByIdRequest
+	1, // 2: demoserveice.NewsService.GetNewsById:output_type -> demoserveice.GetNewsByIdResponse
 	2, // [2:3] is the sub-list for method output_type
 	1, // [1:2] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name

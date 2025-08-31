@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package demoserveice.api.news.v1;
+package demoservice;
 
 import "google/api/annotations.proto";
 

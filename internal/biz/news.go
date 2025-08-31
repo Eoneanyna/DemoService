@@ -29,16 +29,23 @@ func NewNewsUsecase(repo NewsRepo, logger log.Logger) *NewsUsecase {
 
 // GetNewsById 根据ID获取新闻详情
 func (uc *NewsUsecase) GetNewsById(ctx context.Context, id int32) (*News, error) {
-	news, err := uc.repo.GetNewsById(ctx, id)
-	if err != nil {
-		return nil, err
-	}
-
-	return &News{
-		Id:         news.Id,
-		Title:      news.Title,
-		Content:    news.Content,
-		ViewCount:  news.ViewCount,
-		CreateTime: news.CreateTime,
+	return &News{Id: id,
+		Title:      "标题",
+		Content:    "内容",
+		ViewCount:  0,
+		CreateTime: 0,
 	}, nil
+	//
+	//news, err := uc.repo.GetNewsById(ctx, id)
+	//if err != nil {
+	//	return nil, err
+	//}
+	//
+	//return &News{
+	//	Id:         news.Id,
+	//	Title:      news.Title,
+	//	Content:    news.Content,
+	//	ViewCount:  news.ViewCount,
+	//	CreateTime: news.CreateTime,
+	//}, nil
 }

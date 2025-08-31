@@ -19,7 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	NewsService_GetNewsById_FullMethodName = "/demoserveice.api.news.v1.NewsService/GetNewsById"
+	NewsService_GetNewsById_FullMethodName = "/demoserveice.NewsService/GetNewsById"
 )
 
 // NewsServiceClient is the client API for NewsService service.
@@ -114,7 +114,7 @@ func _NewsService_GetNewsById_Handler(srv interface{}, ctx context.Context, dec 
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var NewsService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "demoserveice.api.news.v1.NewsService",
+	ServiceName: "demoserveice.NewsService",
 	HandlerType: (*NewsServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
