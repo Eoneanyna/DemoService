@@ -34,7 +34,7 @@ func (r *Redis) SetNewsDetailById(ctx context.Context, news db.News) error {
 		return err
 	}
 
-	_, err = rdb.HSet(ctx, fmt.Sprintf("%s%d", newsDetailCacheNamePre, news.Id, data)).Result()
+	_, err = rdb.HSet(ctx, newsDetailCacheNamePre, fmt.Sprintf("%d", news.Id), data).Result()
 	if err != nil {
 		return err
 	}
@@ -81,7 +81,7 @@ func (r *Redis) SetNewsHotList(ctx context.Context, key string, newsList []*db.N
 		if strings.Contains(key, ":hot:") {
 			score = float64(news.ViewCount) // 按点击量排序
 		} else {
-			score = float64(news.CreateTime) // 按时间排序
+			score = float64(news.CreateTime.Unix()) // 按时间排序
 		}
 
 		rdb.ZAdd(ctx, key, redis.Z{

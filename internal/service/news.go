@@ -4,7 +4,6 @@ import (
 	"context"
 	v1 "demoserveice/api/news/v1"
 	"demoserveice/internal/biz"
-	"fmt"
 	"github.com/go-kratos/kratos/v2/log"
 )
 
@@ -24,7 +23,7 @@ func NewNewsService(uc *biz.NewsUsecase, logger log.Logger) *NewsService {
 
 // GetNewsById 根据ID获取新闻详情
 func (s *NewsService) GetNewsById(ctx context.Context, req *v1.GetNewsByIdRequest) (*v1.GetNewsByIdResponse, error) {
-	fmt.Printf("GetNewsById req: %v", req)
+	log.Infof("GetNewsById req: %v", req)
 	news, err := s.uc.GetNewsById(ctx, req.Id)
 	if err != nil {
 		return nil, err

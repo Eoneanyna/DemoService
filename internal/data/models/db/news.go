@@ -2,14 +2,15 @@ package db
 
 import (
 	"context"
+	"time"
 )
 
 type News struct {
-	Id         int32  `gorm:"primary_key;column:id"`
-	Title      string `gorm:"column:title;comment:标题"`
-	Content    string `gorm:"column:Content;comment:内容"`
-	ViewCount  int64  `gorm:"column:view_count;comment:点击量"`
-	CreateTime int64  `gorm:"column:create_time;type:datetime;not null;comment:创建时间"`
+	Id         int32     `gorm:"primary_key;column:id"`
+	Title      string    `gorm:"column:title;comment:标题"`
+	Content    string    `gorm:"column:content;comment:内容"`
+	ViewCount  int64     `gorm:"column:view_count;comment:点击量"`
+	CreateTime time.Time `gorm:"column:create_time;type:datetime;not null;comment:创建时间"`
 }
 
 func (News) TableName() string {

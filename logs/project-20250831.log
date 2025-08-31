@@ -4,3 +4,132 @@
 {"level":"error","t":"2025-08-31 19:04:36","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoservice.grpc/GetNewsById","args":"id:123","code":"500","reason":"","stack":"context deadline exceeded","latency":"4.096836"}
 {"level":"error","t":"2025-08-31 21:18:18","caller":"service/news.go:26","msg":"GetNewsById req: id:123"}
 {"level":"error","t":"2025-08-31 21:18:33","caller":"service/news.go:26","msg":"GetNewsById req: id:123"}
+{"level":"error","t":"2025-08-31 21:41:38","caller":"data/news.go:41","msg":"trace","service.name":"demoservice","sql":"SELECT * FROM `news` WHERE id = 123","error":"context deadline exceeded","elapsed":0,"rows":0,"sql":"SELECT * FROM `news` WHERE id = 123"}
+{"level":"error","t":"2025-08-31 21:41:47","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:123","code":"500","reason":"","stack":"context deadline exceeded","latency":"21.4953047"}
+{"level":"error","t":"2025-08-31 21:56:59","caller":"data/news.go:41","msg":"trace","service.name":"demoservice","sql":"SELECT * FROM `news` WHERE id = 123","error":"context deadline exceeded","elapsed":0,"rows":0,"sql":"SELECT * FROM `news` WHERE id = 123"}
+{"level":"error","t":"2025-08-31 21:57:03","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:123","code":"500","reason":"","stack":"context deadline exceeded","latency":"6.7027451"}
+{"level":"error","t":"2025-08-31 21:57:26","caller":"data/news.go:41","msg":"trace","service.name":"demoservice","sql":"SELECT * FROM `news` WHERE id = 123","error":"context deadline exceeded","elapsed":0,"rows":0,"sql":"SELECT * FROM `news` WHERE id = 123"}
+{"level":"error","t":"2025-08-31 21:57:32","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:123","code":"500","reason":"","stack":"context deadline exceeded","latency":"19.9974549"}
+{"level":"error","t":"2025-08-31 21:57:44","caller":"data/news.go:41","msg":"trace","service.name":"demoservice","sql":"SELECT * FROM `news` WHERE id = 1","error":"context deadline exceeded","elapsed":0,"rows":0,"sql":"SELECT * FROM `news` WHERE id = 1"}
+{"level":"error","t":"2025-08-31 21:57:44","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"500","reason":"","stack":"context deadline exceeded","latency":"2.4092663"}
+{"level":"error","t":"2025-08-31 21:58:01","caller":"data/news.go:41","msg":"trace","service.name":"demoservice","sql":"SELECT * FROM `news` WHERE id = 1","error":"sql: Scan error on column index 3, name \"create_time\": converting driver.Value type time.Time (\"2025-08-31 21:56:33 +0800 CST\") to a int64: invalid syntax","elapsed":0.0031649,"rows":1,"sql":"SELECT * FROM `news` WHERE id = 1"}
+{"level":"error","t":"2025-08-31 21:58:01","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"500","reason":"","stack":"sql: Scan error on column index 3, name \"create_time\": converting driver.Value type time.Time (\"2025-08-31 21:56:33 +0800 CST\") to a int64: invalid syntax","latency":"0.0989591"}
+{"level":"error","t":"2025-08-31 21:59:36","caller":"data/news.go:54","msg":"设置新闻详情缓存失败，ID: 1, 错误: dial tcp 127.0.0.1:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","t":"2025-08-31 22:05:17","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-08-31 22:05:17","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-08-31 22:05:31","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"error","t":"2025-08-31 22:05:31","caller":"data/news.go:41","msg":"trace","service.name":"demoservice","sql":"SELECT * FROM `news` WHERE id = 1","error":"context deadline exceeded","elapsed":0,"rows":0,"sql":"SELECT * FROM `news` WHERE id = 1"}
+{"level":"error","t":"2025-08-31 22:05:31","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"500","reason":"","stack":"context deadline exceeded","latency":"2.6296745"}
+{"level":"info","t":"2025-08-31 22:05:36","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-08-31 22:05:36","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-08-31 22:05:36","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}
+{"level":"info","t":"2025-08-31 22:05:42","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-08-31 22:05:42","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-08-31 22:09:04","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"error","t":"2025-08-31 22:09:05","caller":"data/news.go:41","msg":"trace","service.name":"demoservice","sql":"SELECT * FROM `news` WHERE id = 1","error":"context deadline exceeded","elapsed":0.0005366,"rows":0,"sql":"SELECT * FROM `news` WHERE id = 1"}
+{"level":"error","t":"2025-08-31 22:09:18","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"500","reason":"","stack":"context deadline exceeded","latency":"19.8867695"}
+{"level":"info","t":"2025-08-31 22:20:43","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-08-31 22:20:43","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-08-31 22:20:43","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}
+{"level":"info","t":"2025-08-31 22:20:50","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-08-31 22:20:50","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-08-31 22:20:56","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:20:58","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"error","t":"2025-08-31 22:20:58","caller":"data/news.go:41","msg":"trace","service.name":"demoservice","sql":"SELECT * FROM `news` WHERE id = 1","error":"context deadline exceeded","elapsed":0.0005301,"rows":0,"sql":"SELECT * FROM `news` WHERE id = 1"}
+{"level":"error","t":"2025-08-31 22:20:58","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"500","reason":"","stack":"context deadline exceeded","latency":"2.0240935"}
+{"level":"info","t":"2025-08-31 22:26:01","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:26:07","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"error","t":"2025-08-31 22:26:07","caller":"data/news.go:41","msg":"trace","service.name":"demoservice","sql":"SELECT * FROM `news` WHERE id = 1","error":"context deadline exceeded","elapsed":0,"rows":0,"sql":"SELECT * FROM `news` WHERE id = 1"}
+{"level":"error","t":"2025-08-31 22:26:07","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"500","reason":"","stack":"context deadline exceeded","latency":"6.5369503"}
+{"level":"info","t":"2025-08-31 22:26:11","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:26:11","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:26:11","caller":"data/news.go:51","msg":"将新闻详情存入Redis缓存，ID: 1"}
+{"level":"error","t":"2025-08-31 22:27:02","caller":"data/news.go:54","msg":"设置新闻详情缓存失败，ID: 1, 错误: context deadline exceeded"}
+{"level":"info","t":"2025-08-31 22:27:02","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"50.8793728"}
+{"level":"info","t":"2025-08-31 22:27:08","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:27:08","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:27:08","caller":"data/news.go:51","msg":"将新闻详情存入Redis缓存，ID: 1"}
+{"level":"error","t":"2025-08-31 22:28:01","caller":"data/news.go:54","msg":"设置新闻详情缓存失败，ID: 1, 错误: ERR wrong number of arguments for 'hset' command"}
+{"level":"info","t":"2025-08-31 22:28:01","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"52.7065295"}
+{"level":"info","t":"2025-08-31 22:28:01","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-08-31 22:28:01","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-08-31 22:28:01","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}
+{"level":"info","t":"2025-08-31 22:28:20","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-08-31 22:28:20","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-08-31 22:28:23","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:28:23","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:28:23","caller":"data/news.go:51","msg":"将新闻详情存入Redis缓存，ID: 1"}
+{"level":"error","t":"2025-08-31 22:28:30","caller":"data/news.go:54","msg":"设置新闻详情缓存失败，ID: 1, 错误: ERR wrong number of arguments for 'hset' command"}
+{"level":"info","t":"2025-08-31 22:28:30","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"6.7020652"}
+{"level":"info","t":"2025-08-31 22:28:30","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-08-31 22:28:30","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-08-31 22:28:30","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}
+{"level":"info","t":"2025-08-31 22:28:36","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-08-31 22:28:36","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-08-31 22:28:47","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:28:47","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:28:47","caller":"data/news.go:51","msg":"将新闻详情存入Redis缓存，ID: 1"}
+{"level":"error","t":"2025-08-31 22:29:03","caller":"data/news.go:54","msg":"设置新闻详情缓存失败，ID: 1, 错误: ERR wrong number of arguments for 'hset' command"}
+{"level":"info","t":"2025-08-31 22:29:04","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"17.128284"}
+{"level":"info","t":"2025-08-31 22:30:15","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:30:15","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:30:15","caller":"data/news.go:51","msg":"将新闻详情存入Redis缓存，ID: 1"}
+{"level":"error","t":"2025-08-31 22:32:12","caller":"data/news.go:54","msg":"设置新闻详情缓存失败，ID: 1, 错误: ERR wrong number of arguments for 'hset' command"}
+{"level":"info","t":"2025-08-31 22:32:12","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"116.904363"}
+{"level":"info","t":"2025-08-31 22:32:12","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-08-31 22:32:12","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-08-31 22:32:12","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}
+{"level":"info","t":"2025-08-31 22:32:19","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-08-31 22:32:19","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-08-31 22:32:22","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:32:22","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:32:22","caller":"data/news.go:51","msg":"将新闻详情存入Redis缓存，ID: 1"}
+{"level":"info","t":"2025-08-31 22:32:27","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"4.7991082"}
+{"level":"info","t":"2025-08-31 22:39:34","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-08-31 22:39:34","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-08-31 22:39:34","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}
+{"level":"info","t":"2025-08-31 22:39:39","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-08-31 22:39:39","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-08-31 22:39:40","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:39:40","caller":"data/news.go:35","msg":"从Redis获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:39:40","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"0.0016328"}
+{"level":"info","t":"2025-08-31 22:39:44","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:39:44","caller":"data/news.go:35","msg":"从Redis获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:39:44","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"0.000522"}
+{"level":"info","t":"2025-08-31 22:40:31","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:40:31","caller":"data/news.go:35","msg":"从Redis获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:40:31","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"0.0005495"}
+{"level":"info","t":"2025-08-31 22:41:00","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:41:50","caller":"data/news.go:35","msg":"从Redis获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:41:50","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"50.0832456"}
+{"level":"info","t":"2025-08-31 22:42:31","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:42:31","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:42:31","caller":"data/news.go:51","msg":"将新闻详情存入Redis缓存，ID: 1"}
+{"level":"info","t":"2025-08-31 22:42:51","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"19.5312639"}
+{"level":"info","t":"2025-08-31 22:43:39","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:43:39","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:43:58","caller":"data/news.go:51","msg":"将新闻详情存入Redis缓存，ID: 1"}
+{"level":"error","t":"2025-08-31 22:43:59","caller":"data/news.go:54","msg":"设置新闻详情缓存失败，ID: 1, 错误: context deadline exceeded"}
+{"level":"info","t":"2025-08-31 22:43:59","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"19.4531445"}
+{"level":"info","t":"2025-08-31 22:43:59","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-08-31 22:43:59","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-08-31 22:43:59","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}
+{"level":"info","t":"2025-08-31 22:44:05","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-08-31 22:44:05","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-08-31 22:44:10","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:44:10","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:44:16","caller":"data/news.go:51","msg":"将新闻详情存入Redis缓存，ID: 1"}
+{"level":"error","t":"2025-08-31 22:44:18","caller":"data/news.go:54","msg":"设置新闻详情缓存失败，ID: 1, 错误: context deadline exceeded"}
+{"level":"info","t":"2025-08-31 22:44:18","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"8.0241717"}
+{"level":"info","t":"2025-08-31 22:44:41","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:44:41","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:44:57","caller":"data/news.go:51","msg":"将新闻详情存入Redis缓存，ID: 1"}
+{"level":"error","t":"2025-08-31 22:45:09","caller":"data/news.go:54","msg":"设置新闻详情缓存失败，ID: 1, 错误: context deadline exceeded"}
+{"level":"info","t":"2025-08-31 22:45:09","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"27.837614"}
+{"level":"info","t":"2025-08-31 22:45:22","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:45:22","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:45:22","caller":"data/news.go:51","msg":"将新闻详情存入Redis缓存，ID: 1"}
+{"level":"info","t":"2025-08-31 22:45:26","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"3.3137922"}
+{"level":"info","t":"2025-08-31 22:45:46","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-08-31 22:45:46","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-08-31 22:45:46","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}

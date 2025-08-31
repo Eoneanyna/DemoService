@@ -81,7 +81,7 @@ func main() {
 	flag.Parse()
 	configLogLevel := os.Getenv("CONFIGLOGLEVEL")
 	if configLogLevel == "" {
-		configLogLevel = "error"
+		configLogLevel = "Debug"
 	}
 	encoder := zapcore.EncoderConfig{
 		TimeKey:   "t",
