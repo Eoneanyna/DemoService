@@ -6,10 +6,10 @@ import (
 
 type News struct {
 	Id         int32  `gorm:"primary_key;column:id"`
-	Title      int32  `gorm:"column:title;comment:标题"`
+	Title      string `gorm:"column:title;comment:标题"`
 	Content    string `gorm:"column:Content;comment:内容"`
-	ViewCount  int32  `gorm:"column:view_count;comment:点击量"`
-	CreateTime int32  `gorm:"column:create_time;type:datetime;not null;default:CURRENT_TIMESTAMP;comment:创建时间"`
+	ViewCount  int64  `gorm:"column:view_count;comment:点击量"`
+	CreateTime int64  `gorm:"column:create_time;type:datetime;not null;default:CURRENT_TIMESTAMP;comment:创建时间"`
 }
 
 func (News) TableName() string {

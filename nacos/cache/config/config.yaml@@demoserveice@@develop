@@ -1,9 +1,9 @@
 server:
   http:
-    addr: 0.0.0.0:8000
+    addr: 0.0.0.0:8001
     timeout: 1s
   grpc:
-    addr: 0.0.0.0:9000
+    addr: 0.0.0.0:9001
     timeout: 1s
   registry:
     addr: localhost
@@ -14,7 +14,7 @@ data:
   database:
     driver: mysql
     source: root:123456@tcp(127.0.0.1:3306)/demo
-    logprefix: demoserveice
+    logprefix: demoservice
   redis:
     addr: 127.0.0.1:6379
     read_timeout: 0.2s

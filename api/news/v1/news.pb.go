@@ -116,10 +116,10 @@ func (x *GetNewsByIdResponse) GetNews() *News {
 type News struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title         int32                  `protobuf:"varint,2,opt,name=title,proto3" json:"title,omitempty"`
+	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
 	Content       string                 `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty"`
-	ViewCount     int32                  `protobuf:"varint,4,opt,name=view_count,json=viewCount,proto3" json:"view_count,omitempty"`
-	CreateTime    int32                  `protobuf:"varint,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	ViewCount     int64                  `protobuf:"varint,4,opt,name=view_count,json=viewCount,proto3" json:"view_count,omitempty"`
+	CreateTime    int64                  `protobuf:"varint,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -161,11 +161,11 @@ func (x *News) GetId() int32 {
 	return 0
 }
 
-func (x *News) GetTitle() int32 {
+func (x *News) GetTitle() string {
 	if x != nil {
 		return x.Title
 	}
-	return 0
+	return ""
 }
 
 func (x *News) GetContent() string {
@@ -175,14 +175,14 @@ func (x *News) GetContent() string {
 	return ""
 }
 
-func (x *News) GetViewCount() int32 {
+func (x *News) GetViewCount() int64 {
 	if x != nil {
 		return x.ViewCount
 	}
 	return 0
 }
 
-func (x *News) GetCreateTime() int32 {
+func (x *News) GetCreateTime() int64 {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -200,11 +200,11 @@ const file_api_news_v1_news_proto_rawDesc = "" +
 	"\x04news\x18\x01 \x01(\v2\x1e.demoserveice.api.news.v1.NewsR\x04news\"\x86\x01\n" +
 	"\x04News\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x14\n" +
-	"\x05title\x18\x02 \x01(\x05R\x05title\x12\x18\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\x12\x18\n" +
 	"\acontent\x18\x03 \x01(\tR\acontent\x12\x1d\n" +
 	"\n" +
-	"view_count\x18\x04 \x01(\x05R\tviewCount\x12\x1f\n" +
-	"\vcreate_time\x18\x05 \x01(\x05R\n" +
+	"view_count\x18\x04 \x01(\x03R\tviewCount\x12\x1f\n" +
+	"\vcreate_time\x18\x05 \x01(\x03R\n" +
 	"createTime2\x91\x01\n" +
 	"\vNewsService\x12\x81\x01\n" +
 	"\vGetNewsById\x12,.demoserveice.api.news.v1.GetNewsByIdRequest\x1a-.demoserveice.api.news.v1.GetNewsByIdResponse\"\x15\x82\xd3\xe4\x93\x02\x0f\x12\r/v1/news/{id}B\x1fP\x01Z\x1bdemoserveice/api/news/v1;v1b\x06proto3"

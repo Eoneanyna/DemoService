@@ -14,7 +14,7 @@ import (
 	"demoserveice/internal/service"
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/log"
-	"net/http"
+	_ "net/http"
 )
 
 // Injectors from wire.go:

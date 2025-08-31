@@ -8,10 +8,10 @@ import (
 
 type News struct {
 	Id         int32
-	Title      int32
+	Title      string
 	Content    string
-	ViewCount  int32
-	CreateTime int32
+	ViewCount  int64
+	CreateTime int64
 }
 
 type NewsRepo interface {

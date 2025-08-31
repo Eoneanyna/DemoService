@@ -3,7 +3,6 @@ package data
 import (
 	"context"
 	"demoserveice/internal/biz"
-	"demoserveice/internal/data/models/db"
 	"github.com/go-kratos/kratos/v2/log"
 )
 
@@ -21,17 +20,17 @@ func NewGreeterRepo(data *Data, logger log.Logger) biz.GreeterRepo {
 }
 
 func (r *greeterRepo) CreateGreeter(ctx context.Context, g *biz.Greeter) (error, biz.NewsService) {
-	news := db.Ecmsnews{
-		Id:      1,
-		ClassId: 1,
-		Content: "hello word ",
-	}
-	servic := biz.NewsService{
-		AirctId: news.Id,
-		Content: news.Content,
-	}
+	//news := db.Ecmsnews{
+	//	Id:      1,
+	//	ClassId: 1,
+	//	Content: "hello word ",
+	//}
+	//servic := biz.NewsService{
+	//	AirctId: news.Id,
+	//	Content: news.Content,
+	//}
 	//err := errors.New("serverce err")
-	return nil, servic
+	return nil, biz.NewsService{}
 }
 
 func (r *greeterRepo) UpdateGreeter(ctx context.Context, g *biz.Greeter) error {
