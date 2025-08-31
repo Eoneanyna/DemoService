@@ -15,6 +15,12 @@ service NewsService {
       get: "/v1/news/{id}"
     };
   }
+    // 根据ID获取新闻详情
+  rpc CreateNews(CreateNewsRequest) returns (CreateNewsResponse) {
+    option (google.api.http) = {
+    post: "/v1/news"
+        };
+  }
 }
 
 // 根据ID获取新闻详情请求
@@ -25,6 +31,17 @@ message GetNewsByIdRequest {
 // 根据ID获取新闻详情响应
 message GetNewsByIdResponse {
   News news = 1;
+}
+
+// 创建新闻请求
+message CreateNewsRequest {
+  string title = 1;
+  string content = 2;
+}
+
+ // 创建新闻响应
+message CreateNewsResponse {
+  int32 id = 1;
 }
 
 // 新闻信息

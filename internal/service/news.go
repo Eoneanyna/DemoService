@@ -4,6 +4,7 @@ import (
 	"context"
 	v1 "demoserveice/api/news/v1"
 	"demoserveice/internal/biz"
+	"demoserveice/internal/data"
 	"github.com/go-kratos/kratos/v2/log"
 )
 
@@ -37,5 +38,18 @@ func (s *NewsService) GetNewsById(ctx context.Context, req *v1.GetNewsByIdReques
 			ViewCount:  news.ViewCount,
 			CreateTime: news.CreateTime,
 		},
+	}, nil
+}
+
+// CreateNews 根据ID获取新闻详情
+func (s *NewsService) CreateNews(ctx context.Context, req *v1.CreateNewsRequest) (*v1.CreateNewsResponse, error) {
+	log.Infof("CreateNews req: %v", req)
+	news, err := s.uc.CreateNews(ctx, &data.CreateNewsReq{Title: req.Title, Content: req.Content})
+	if err != nil {
+		return nil, err
+	}
+
+	return &v1.CreateNewsResponse{
+		Id: news.Id,
 	}, nil
 }

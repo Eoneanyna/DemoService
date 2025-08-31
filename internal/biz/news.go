@@ -2,6 +2,7 @@ package biz
 
 import (
 	"context"
+	"demoserveice/internal/data"
 	"demoserveice/internal/data/models/db"
 	"github.com/go-kratos/kratos/v2/log"
 )
@@ -16,6 +17,7 @@ type News struct {
 
 type NewsRepo interface {
 	GetNewsById(ctx context.Context, id int32) (db.News, error)
+	CreateNews(ctx context.Context, news *data.CreateNewsReq) (data.CreateNewsResp, error)
 }
 
 type NewsUsecase struct {
@@ -41,4 +43,14 @@ func (uc *NewsUsecase) GetNewsById(ctx context.Context, id int32) (*News, error)
 		ViewCount:  news.ViewCount,
 		CreateTime: news.CreateTime.Unix(),
 	}, nil
+}
+
+// CreateNews 根据ID获取新闻详情
+func (uc *NewsUsecase) CreateNews(ctx context.Context, req *data.CreateNewsReq) (data.CreateNewsResp, error) {
+	news, err := uc.repo.CreateNews(ctx, &data.CreateNewsReq{Content: req.Content, Title: req.Title})
+	if err != nil {
+		return data.CreateNewsResp{}, err
+	}
+
+	return news, nil
 }

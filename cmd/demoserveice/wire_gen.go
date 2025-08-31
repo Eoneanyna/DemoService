@@ -27,18 +27,14 @@ func initApp(confServer *conf.Server, confData *conf.Data, logger log.Logger) (*
 	}
 	redisData, cleanup, err := data.NewRedis(confData)
 	 if err != nil {return nil, nil, err}
-	greeterRepo := data.NewGreeterRepo(dataData, logger)
-	greeterUsecase := biz.NewGreeterUsecase(greeterRepo, logger)
-	greeterService := service.NewGreeterService(greeterUsecase, logger)
-	httpServer := server.NewHTTPServer(confServer, greeterService)
 
 	newsRepo := data.NewNewsRepo(dataData,redisData,logger)
 	newsUsecase := biz.NewNewsUsecase(newsRepo, logger)
 	newsService := service.NewNewsService(newsUsecase, logger)
-	httpServer = server.NewHTTPServer(confServer, greeterService)
+	httpServer := server.NewHTTPServer(confServer)
 	dataStreamService := service.NewDataStreamService()
 
-	grpcServer := server.NewGRPCServer(confServer,newsService, greeterService, dataStreamService)
+	grpcServer := server.NewGRPCServer(confServer,newsService, dataStreamService)
 	app := newApp(logger, httpServer, grpcServer, confServer)
 	return app, func() {
 		cleanup()

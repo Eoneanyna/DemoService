@@ -2,6 +2,7 @@ package db
 
 import (
 	"context"
+	"github.com/go-kratos/kratos/v2/log"
 	"time"
 )
 
@@ -45,12 +46,14 @@ func (m *DB) GetNews(ctx context.Context, page int32, pageSize int) (news []News
 	return news, nil
 }
 
-func (m *DB) CreateNews(ctx context.Context, news News) (err error) {
+func (m *DB) CreateNews(ctx context.Context, news News) (n News, err error) {
 	db := m.Source.WithContext(ctx)
 
+	news.CreateTime = time.Now()
 	if err = db.Create(&news).Error; err != nil {
-		return err
+		log.Errorf("数据%+v创建失败，err = %v", news, err)
+		return News{}, err
 	}
 
-	return nil
+	return news, nil
 }

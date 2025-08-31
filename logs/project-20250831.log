@@ -133,3 +133,34 @@
 {"level":"info","t":"2025-08-31 22:45:46","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
 {"level":"info","t":"2025-08-31 22:45:46","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
 {"level":"info","t":"2025-08-31 22:45:46","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}
+{"level":"info","t":"2025-08-31 22:47:59","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-08-31 22:47:59","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-08-31 22:48:17","caller":"service/news.go:26","msg":"GetNewsById req: id:3"}
+{"level":"info","t":"2025-08-31 22:48:17","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 3"}
+{"level":"info","t":"2025-08-31 22:48:17","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:3","code":"0","reason":"","stack":"","latency":"0.0025426"}
+{"level":"info","t":"2025-08-31 22:48:24","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:48:24","caller":"data/news.go:35","msg":"从Redis获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:48:24","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"0.0005303"}
+{"level":"info","t":"2025-08-31 22:48:47","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-08-31 22:48:47","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-08-31 22:48:47","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}
+{"level":"info","t":"2025-08-31 22:50:08","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-08-31 22:50:08","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-08-31 22:50:21","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:50:21","caller":"data/news.go:35","msg":"从Redis获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:50:21","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"0.00182"}
+{"level":"info","t":"2025-08-31 22:50:25","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:50:25","caller":"data/news.go:35","msg":"从Redis获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:50:25","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"0.0011647"}
+{"level":"info","t":"2025-08-31 22:52:24","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-08-31 22:52:24","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-08-31 22:52:24","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}
+{"level":"info","t":"2025-08-31 22:52:28","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-08-31 22:52:28","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-08-31 22:52:39","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-08-31 22:52:39","caller":"data/news.go:40","msg":"Redis未命中，从MySQL获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-08-31 22:52:39","caller":"data/news.go:51","msg":"将新闻详情存入Redis缓存，ID: 1"}
+{"level":"info","t":"2025-08-31 22:52:39","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoserveice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"0.0025108"}
+{"level":"info","t":"2025-08-31 23:10:10","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-08-31 23:10:10","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-08-31 23:10:10","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}

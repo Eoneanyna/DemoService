@@ -2,19 +2,17 @@ package server
 
 import (
 	"demoserveice/internal/conf"
-	"demoserveice/internal/service"
 	"demoserveice/middleware/validate"
 	"demoserveice/pkg/encode"
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/middleware/logging"
 	"github.com/go-kratos/kratos/v2/middleware/recovery"
 	"github.com/go-kratos/kratos/v2/transport/http"
-	v1 "gitlab.cqrb.cn/shangyou_mic/testpg/api/demoserveice/v1"
 )
 
 // NewHTTPServer new a HTTP server.
 
-func NewHTTPServer(c *conf.Server, GreeterService *service.GreeterService) *http.Server {
+func NewHTTPServer(c *conf.Server) *http.Server {
 	var opts = []http.ServerOption{
 		http.Middleware(
 			recovery.Recovery(),
@@ -41,6 +39,5 @@ func NewHTTPServer(c *conf.Server, GreeterService *service.GreeterService) *http
 		ctx.JSON(200, map[string]string{"status": "UP"})
 		return nil
 	})
-	v1.RegisterGreeterHTTPServer(srv, GreeterService)
 	return srv
 }

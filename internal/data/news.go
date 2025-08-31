@@ -5,10 +5,12 @@ import (
 	"demoserveice/internal/data/models/db"
 	"demoserveice/internal/data/models/redis"
 	"github.com/go-kratos/kratos/v2/log"
+	"time"
 )
 
 type NewsRepo interface {
 	GetNewsById(ctx context.Context, id int32) (db.News, error)
+	CreateNews(ctx context.Context, req *CreateNewsReq) (CreateNewsResp, error)
 }
 
 type newsRepo struct {
@@ -55,4 +57,41 @@ func (r *newsRepo) GetNewsById(ctx context.Context, id int32) (db.News, error) {
 	}
 
 	return mysqlNews[0], nil
+}
+
+type CreateNewsReq struct {
+	Title   string `json:"title"`
+	Content string `json:"content"`
+}
+type CreateNewsResp struct {
+	Id int32 `json:"id"`
+}
+
+// CreateNews 查询mysql的新闻详情
+func (r *newsRepo) CreateNews(ctx context.Context, req *CreateNewsReq) (CreateNewsResp, error) {
+	dbD := db.NewDb(r.data.db)
+	rdb := redis.NewRedis(r.redis.rdb)
+
+	//TODO 假设标题是唯一的，先查询是否存在,如果不存在则插入存在则插入数据
+
+	news, err := dbD.CreateNews(ctx, db.News{
+		Title:   req.Title,
+		Content: req.Content,
+	})
+	if err != nil {
+		return CreateNewsResp{}, err
+	}
+
+	//TODO 存入redis数据，热点排行榜+内容缓存，过期时间可以从配置文件获取
+	err = rdb.SetOneNewsHotList(ctx, &news, time.Hour*24)
+	if err != nil {
+		//没入缓存算了
+		return CreateNewsResp{
+			Id: news.Id,
+		}, nil
+	}
+
+	return CreateNewsResp{
+		Id: news.Id,
+	}, nil
 }

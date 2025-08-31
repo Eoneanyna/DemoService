@@ -1,0 +1,52 @@
+{"level":"info","t":"2025-09-01 00:04:29","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-09-01 00:04:29","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-09-01 00:08:44","caller":"service/news.go:27","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-09-01 00:08:47","caller":"data/news.go:37","msg":"从Redis获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-09-01 00:08:47","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoservice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"2.4072399"}
+{"level":"info","t":"2025-09-01 00:08:55","caller":"service/news.go:27","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-09-01 00:08:55","caller":"data/news.go:37","msg":"从Redis获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-09-01 00:08:55","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoservice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"0.0005291"}
+{"level":"info","t":"2025-09-01 00:09:38","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-09-01 00:09:38","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-09-01 00:09:38","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}
+{"level":"info","t":"2025-09-01 00:12:12","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-09-01 00:12:12","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-09-01 00:13:11","caller":"service/news.go:46","msg":"CreateNews req: title:\"文章2\"  content:\"注意看这个人\""}
+{"level":"error","t":"2025-09-01 00:13:11","caller":"data/news.go:77","msg":"trace","service.name":"demoservice","sql":"INSERT INTO `news` (`title`,`content`,`view_count`,`create_time`) VALUES ('文章2','注意看这个人',0,'0000-00-00 00:00:00')","error":"Error 1054 (42S22): Unknown column 'view_count' in 'field list'","elapsed":0.0010633,"rows":0,"sql":"INSERT INTO `news` (`title`,`content`,`view_count`,`create_time`) VALUES ('文章2','注意看这个人',0,'0000-00-00 00:00:00')"}
+{"level":"error","t":"2025-09-01 00:13:11","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoservice.NewsService/CreateNews","args":"title:\"文章2\"  content:\"注意看这个人\"","code":"500","reason":"","stack":"Error 1054 (42S22): Unknown column 'view_count' in 'field list'","latency":"0.0027529"}
+{"level":"info","t":"2025-09-01 00:14:34","caller":"service/news.go:46","msg":"CreateNews req: title:\"文章2\"  content:\"注意看这个人\""}
+{"level":"error","t":"2025-09-01 00:14:51","caller":"data/news.go:77","msg":"trace","service.name":"demoservice","sql":"INSERT INTO `news` (`title`,`content`,`view_count`,`create_time`) VALUES ('文章2','注意看这个人',0,'0000-00-00 00:00:00')","error":"context deadline exceeded","elapsed":0.0007652,"rows":0,"sql":"INSERT INTO `news` (`title`,`content`,`view_count`,`create_time`) VALUES ('文章2','注意看这个人',0,'0000-00-00 00:00:00')"}
+{"level":"error","t":"2025-09-01 00:15:17","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoservice.NewsService/CreateNews","args":"title:\"文章2\"  content:\"注意看这个人\"","code":"500","reason":"","stack":"context deadline exceeded","latency":"43.2565802"}
+{"level":"info","t":"2025-09-01 00:15:20","caller":"service/news.go:46","msg":"CreateNews req: title:\"文章2\"  content:\"注意看这个人\""}
+{"level":"error","t":"2025-09-01 00:15:20","caller":"data/news.go:77","msg":"trace","service.name":"demoservice","sql":"INSERT INTO `news` (`title`,`content`,`view_count`,`create_time`) VALUES ('文章2','注意看这个人',0,'0000-00-00 00:00:00')","error":"Error 1054 (42S22): Unknown column 'view_count' in 'field list'","elapsed":0.0005265,"rows":0,"sql":"INSERT INTO `news` (`title`,`content`,`view_count`,`create_time`) VALUES ('文章2','注意看这个人',0,'0000-00-00 00:00:00')"}
+{"level":"error","t":"2025-09-01 00:15:20","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoservice.NewsService/CreateNews","args":"title:\"文章2\"  content:\"注意看这个人\"","code":"500","reason":"","stack":"Error 1054 (42S22): Unknown column 'view_count' in 'field list'","latency":"0.0010862"}
+{"level":"info","t":"2025-09-01 00:15:29","caller":"service/news.go:46","msg":"CreateNews req: title:\"文章2\"  content:\"注意看这个人\""}
+{"level":"error","t":"2025-09-01 00:15:32","caller":"data/news.go:77","msg":"trace","service.name":"demoservice","sql":"INSERT INTO `news` (`title`,`content`,`view_count`,`create_time`) VALUES ('文章2','注意看这个人',0,'0000-00-00 00:00:00')","error":"context deadline exceeded","elapsed":0,"rows":0,"sql":"INSERT INTO `news` (`title`,`content`,`view_count`,`create_time`) VALUES ('文章2','注意看这个人',0,'0000-00-00 00:00:00')"}
+{"level":"error","t":"2025-09-01 00:15:38","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoservice.NewsService/CreateNews","args":"title:\"文章2\"  content:\"注意看这个人\"","code":"500","reason":"","stack":"context deadline exceeded","latency":"8.6743347"}
+{"level":"info","t":"2025-09-01 00:17:04","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-09-01 00:17:04","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-09-01 00:17:04","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}
+{"level":"info","t":"2025-09-01 00:17:10","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-09-01 00:17:10","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-09-01 00:17:12","caller":"service/news.go:46","msg":"CreateNews req: title:\"文章2\"  content:\"注意看这个人\""}
+{"level":"error","t":"2025-09-01 00:17:17","caller":"data/news.go:77","msg":"trace","service.name":"demoservice","sql":"INSERT INTO `news` (`title`,`content`,`view_count`,`create_time`) VALUES ('文章2','注意看这个人',0,'0000-00-00 00:00:00')","error":"context deadline exceeded","elapsed":0,"rows":0,"sql":"INSERT INTO `news` (`title`,`content`,`view_count`,`create_time`) VALUES ('文章2','注意看这个人',0,'0000-00-00 00:00:00')"}
+{"level":"error","t":"2025-09-01 00:17:21","caller":"db/news.go:53","msg":"数据{Id:0 Title:文章2 Content:注意看这个人 ViewCount:0 CreateTime:0001-01-01 00:00:00 +0000 UTC}创建失败，err = context deadline exceeded"}
+{"level":"error","t":"2025-09-01 00:17:21","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoservice.NewsService/CreateNews","args":"title:\"文章2\"  content:\"注意看这个人\"","code":"500","reason":"","stack":"context deadline exceeded","latency":"9.2671657"}
+{"level":"info","t":"2025-09-01 00:17:26","caller":"service/news.go:46","msg":"CreateNews req: title:\"文章2\"  content:\"注意看这个人\""}
+{"level":"error","t":"2025-09-01 00:17:26","caller":"data/news.go:77","msg":"trace","service.name":"demoservice","sql":"INSERT INTO `news` (`title`,`content`,`view_count`,`create_time`) VALUES ('文章2','注意看这个人',0,'0000-00-00 00:00:00')","error":"Error 1054 (42S22): Unknown column 'view_count' in 'field list'","elapsed":0.0005424,"rows":0,"sql":"INSERT INTO `news` (`title`,`content`,`view_count`,`create_time`) VALUES ('文章2','注意看这个人',0,'0000-00-00 00:00:00')"}
+{"level":"error","t":"2025-09-01 00:18:41","caller":"db/news.go:53","msg":"数据{Id:0 Title:文章2 Content:注意看这个人 ViewCount:0 CreateTime:0001-01-01 00:00:00 +0000 UTC}创建失败，err = Error 1054 (42S22): Unknown column 'view_count' in 'field list'"}
+{"level":"error","t":"2025-09-01 00:18:41","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoservice.NewsService/CreateNews","args":"title:\"文章2\"  content:\"注意看这个人\"","code":"500","reason":"","stack":"Error 1054 (42S22): Unknown column 'view_count' in 'field list'","latency":"75.2274424"}
+{"level":"info","t":"2025-09-01 00:18:44","caller":"service/news.go:46","msg":"CreateNews req: title:\"文章2\"  content:\"注意看这个人\""}
+{"level":"error","t":"2025-09-01 00:18:44","caller":"data/news.go:77","msg":"trace","service.name":"demoservice","sql":"INSERT INTO `news` (`title`,`content`,`view_count`,`create_time`) VALUES ('文章2','注意看这个人',0,'0000-00-00 00:00:00')","error":"Error 1292 (22007): Incorrect datetime value: '0000-00-00' for column 'create_time' at row 1","elapsed":0.0026408,"rows":0,"sql":"INSERT INTO `news` (`title`,`content`,`view_count`,`create_time`) VALUES ('文章2','注意看这个人',0,'0000-00-00 00:00:00')"}
+{"level":"error","t":"2025-09-01 00:19:20","caller":"db/news.go:53","msg":"数据{Id:0 Title:文章2 Content:注意看这个人 ViewCount:0 CreateTime:0001-01-01 00:00:00 +0000 UTC}创建失败，err = Error 1292 (22007): Incorrect datetime value: '0000-00-00' for column 'create_time' at row 1"}
+{"level":"error","t":"2025-09-01 00:19:20","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoservice.NewsService/CreateNews","args":"title:\"文章2\"  content:\"注意看这个人\"","code":"500","reason":"","stack":"Error 1292 (22007): Incorrect datetime value: '0000-00-00' for column 'create_time' at row 1","latency":"35.8606872"}
+{"level":"info","t":"2025-09-01 00:19:20","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-09-01 00:19:20","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-09-01 00:19:20","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}
+{"level":"info","t":"2025-09-01 00:19:26","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-09-01 00:19:26","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-09-01 00:19:29","caller":"service/news.go:46","msg":"CreateNews req: title:\"文章2\"  content:\"注意看这个人\""}
+{"level":"info","t":"2025-09-01 00:19:33","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoservice.NewsService/CreateNews","args":"title:\"文章2\"  content:\"注意看这个人\"","code":"0","reason":"","stack":"","latency":"3.7438085"}
+{"level":"info","t":"2025-09-01 00:19:45","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-09-01 00:19:45","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-09-01 00:19:45","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}

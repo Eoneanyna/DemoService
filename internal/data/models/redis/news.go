@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/redis/go-redis/v9"
-	"strings"
 	"time"
 )
 
@@ -67,30 +66,46 @@ func (r *Redis) GetNewsHotList(ctx context.Context, key string, page int32, page
 }
 
 // 刷新热点排行
-func (r *Redis) SetNewsHotList(ctx context.Context, key string, newsList []*db.News, expiration time.Duration) error {
+func (r *Redis) SetNewsHotList(ctx context.Context, newsList []*db.News, expiration time.Duration) error {
 	rdb := r.Source
-
 	// 1. 存储新闻详情
 	for _, news := range newsList {
-		detailKey := fmt.Sprintf("%s%d", newsListCacheId, news.Id)
-		data, _ := json.Marshal(news)
-		rdb.Set(ctx, detailKey, data, 24*time.Hour)
-
-		// 根据排序类型设置不同的分数
-		var score float64
-		if strings.Contains(key, ":hot:") {
-			score = float64(news.ViewCount) // 按点击量排序
-		} else {
-			score = float64(news.CreateTime.Unix()) // 按时间排序
-		}
-
-		rdb.ZAdd(ctx, key, redis.Z{
-			Score:  score,
+		//// 根据排序类型设置不同的分数
+		//var score float64
+		//if strings.Contains(key, ":hot:") {
+		//	score = float64(news.ViewCount) // 按点击量排序
+		//} else {
+		//	score = float64(news.CreateTime.Unix()) // 按时间排序
+		//}
+		//		// 安装点击率排名
+		rdb.ZAdd(ctx, newsListCacheId, redis.Z{
+			Score:  float64(news.ViewCount),
 			Member: news.Id,
 		})
 	}
 
 	// 设置过期时间
-	rdb.Expire(ctx, key, expiration)
+	rdb.Expire(ctx, newsListCacheId, expiration)
+	return nil
+}
+
+// 刷新热点排行
+func (r *Redis) SetOneNewsHotList(ctx context.Context, news *db.News, expiration time.Duration) error {
+	rdb := r.Source
+
+	//// 根据排序类型设置不同的分数
+	//var score float64
+	//if strings.Contains(key, ":hot:") {
+	//	score = float64(news.ViewCount) // 按点击量排序
+	//} else {
+	//	score = float64(news.CreateTime.Unix()) // 按时间排序
+	//}
+	//		// 安装点击率排名
+	rdb.ZAdd(ctx, newsListCacheId, redis.Z{
+		Score:  float64(news.ViewCount),
+		Member: news.Id,
+	})
+	// 设置过期时间
+	rdb.Expire(ctx, newsListCacheId, expiration)
 	return nil
 }
