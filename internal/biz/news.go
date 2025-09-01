@@ -41,18 +41,12 @@ type GetNewsByIdResp struct {
 
 // GetNewsById 根据ID获取新闻详情
 func (uc *NewsUsecase) GetNewsById(ctx context.Context, req *GetNewsByIdReq) (GetNewsByIdResp, error) {
-	news, err := uc.repo.GetNewsById(ctx, req)
+	resp, err := uc.repo.GetNewsById(ctx, req)
 	if err != nil {
 		return GetNewsByIdResp{}, err
 	}
 
-	return GetNewsByIdResp{
-		Id:         news.Id,
-		Title:      news.Title,
-		Content:    news.Content,
-		ViewCount:  news.ViewCount,
-		CreateTime: news.CreateTime,
-	}, nil
+	return resp, nil
 }
 
 type CreateNewsReq struct {
@@ -65,10 +59,10 @@ type CreateNewsResp struct {
 
 // CreateNews 根据ID获取新闻详情
 func (uc *NewsUsecase) CreateNews(ctx context.Context, req CreateNewsReq) (CreateNewsResp, error) {
-	news, err := uc.repo.CreateNews(ctx, &CreateNewsReq{Content: req.Content, Title: req.Title})
+	resp, err := uc.repo.CreateNews(ctx, &CreateNewsReq{Content: req.Content, Title: req.Title})
 	if err != nil {
 		return CreateNewsResp{}, err
 	}
 
-	return news, nil
+	return resp, nil
 }

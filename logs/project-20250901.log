@@ -176,3 +176,11 @@
 {"level":"info","t":"2025-09-01 22:14:40","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
 {"level":"info","t":"2025-09-01 22:14:40","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
 {"level":"info","t":"2025-09-01 22:14:40","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}
+{"level":"info","t":"2025-09-01 22:23:41","caller":"grpc/server.go:212","msg":"[gRPC] server listening on: [::]:9001"}
+{"level":"info","t":"2025-09-01 22:23:41","caller":"http/server.go:330","msg":"[HTTP] server listening on: [::]:8001"}
+{"level":"info","t":"2025-09-01 22:23:51","caller":"service/news.go:26","msg":"GetNewsById req: id:1"}
+{"level":"info","t":"2025-09-01 22:23:51","caller":"data/news.go:38","msg":"从Redis获取新闻详情，ID: 1"}
+{"level":"info","t":"2025-09-01 22:23:51","caller":"log/helper.go:80","kind":"server","component":"grpc","operation":"/demoservice.NewsService/GetNewsById","args":"id:1","code":"0","reason":"","stack":"","latency":"0.0005259"}
+{"level":"info","t":"2025-09-01 22:23:55","caller":"http/server.go:345","msg":"[HTTP] server stopping"}
+{"level":"info","t":"2025-09-01 22:23:55","caller":"grpc/server.go:224","msg":"[gRPC] server stopping"}
+{"level":"info","t":"2025-09-01 22:23:55","caller":"data/redis.go:31","msg":"messageclosing the redis resources"}
