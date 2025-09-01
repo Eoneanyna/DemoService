@@ -10,7 +10,6 @@ require (
 	github.com/go-kratos/kratos/contrib/config/nacos/v2 v2.0.0-20240909031108-908e6256a9f6
 	github.com/go-kratos/kratos/contrib/registry/nacos/v2 v2.0.0-20240909031108-908e6256a9f6
 	github.com/go-kratos/kratos/v2 v2.8.0
-	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/golang/protobuf v1.5.4
 	github.com/google/wire v0.6.0
 	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible
@@ -30,7 +29,7 @@ require (
 require (
 	dario.cat/mergo v1.0.0 // indirect
 	github.com/BurntSushi/toml v1.2.0 // indirect
-	github.com/aliyun/alibaba-cloud-sdk-go v1.62.47 // indirect
+	github.com/aliyun/alibaba-cloud-sdk-go v1.63.107 // indirect
 	github.com/buger/jsonparser v1.1.1 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
@@ -51,8 +50,6 @@ require (
 	github.com/lestrrat-go/strftime v1.1.1 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
-	github.com/onsi/ginkgo v1.16.5 // indirect
-	github.com/onsi/gomega v1.20.1 // indirect
 	github.com/opentracing/opentracing-go v1.2.1-0.20220228012449-10b1cf09e00b // indirect
 	go.opentelemetry.io/otel v1.24.0 // indirect
 	go.opentelemetry.io/otel/metric v1.24.0 // indirect

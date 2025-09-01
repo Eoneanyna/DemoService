@@ -2,8 +2,6 @@ package biz
 
 import (
 	"context"
-	"demoserveice/internal/data"
-	"demoserveice/internal/data/models/db"
 	"github.com/go-kratos/kratos/v2/log"
 )
 
@@ -16,8 +14,8 @@ type News struct {
 }
 
 type NewsRepo interface {
-	GetNewsById(ctx context.Context, id int32) (db.News, error)
-	CreateNews(ctx context.Context, news *data.CreateNewsReq) (data.CreateNewsResp, error)
+	GetNewsById(ctx context.Context, req *GetNewsByIdReq) (GetNewsByIdResp, error)
+	CreateNews(ctx context.Context, news *CreateNewsReq) (CreateNewsResp, error)
 }
 
 type NewsUsecase struct {
@@ -29,27 +27,47 @@ func NewNewsUsecase(repo NewsRepo, logger log.Logger) *NewsUsecase {
 	return &NewsUsecase{repo: repo, log: log.NewHelper(logger)}
 }
 
+type GetNewsByIdReq struct {
+	Id int32 `json:"id"`
+}
+
+type GetNewsByIdResp struct {
+	Id         int32  `json:"id"`
+	Title      string `json:"title"`
+	Content    string `json:"content"`
+	ViewCount  int64  `json:"view_count"`
+	CreateTime int64  `json:"create_time"`
+}
+
 // GetNewsById 根据ID获取新闻详情
-func (uc *NewsUsecase) GetNewsById(ctx context.Context, id int32) (*News, error) {
-	news, err := uc.repo.GetNewsById(ctx, id)
+func (uc *NewsUsecase) GetNewsById(ctx context.Context, req *GetNewsByIdReq) (GetNewsByIdResp, error) {
+	news, err := uc.repo.GetNewsById(ctx, req)
 	if err != nil {
-		return nil, err
+		return GetNewsByIdResp{}, err
 	}
 
-	return &News{
+	return GetNewsByIdResp{
 		Id:         news.Id,
 		Title:      news.Title,
 		Content:    news.Content,
 		ViewCount:  news.ViewCount,
-		CreateTime: news.CreateTime.Unix(),
+		CreateTime: news.CreateTime,
 	}, nil
 }
 
+type CreateNewsReq struct {
+	Title   string `json:"title"`
+	Content string `json:"content"`
+}
+type CreateNewsResp struct {
+	Id int32 `json:"id"`
+}
+
 // CreateNews 根据ID获取新闻详情
-func (uc *NewsUsecase) CreateNews(ctx context.Context, req *data.CreateNewsReq) (data.CreateNewsResp, error) {
-	news, err := uc.repo.CreateNews(ctx, &data.CreateNewsReq{Content: req.Content, Title: req.Title})
+func (uc *NewsUsecase) CreateNews(ctx context.Context, req CreateNewsReq) (CreateNewsResp, error) {
+	news, err := uc.repo.CreateNews(ctx, &CreateNewsReq{Content: req.Content, Title: req.Title})
 	if err != nil {
-		return data.CreateNewsResp{}, err
+		return CreateNewsResp{}, err
 	}
 
 	return news, nil

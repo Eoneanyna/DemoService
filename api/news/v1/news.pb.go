@@ -70,7 +70,11 @@ func (x *GetNewsByIdRequest) GetId() int32 {
 // 根据ID获取新闻详情响应
 type GetNewsByIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	News          *News                  `protobuf:"bytes,1,opt,name=news,proto3" json:"news,omitempty"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Content       string                 `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty"`
+	ViewCount     int64                  `protobuf:"varint,4,opt,name=view_count,json=viewCount,proto3" json:"view_count,omitempty"`
+	CreateTime    int64                  `protobuf:"varint,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -105,11 +109,39 @@ func (*GetNewsByIdResponse) Descriptor() ([]byte, []int) {
 	return file_api_news_v1_news_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetNewsByIdResponse) GetNews() *News {
+func (x *GetNewsByIdResponse) GetId() int32 {
 	if x != nil {
-		return x.News
+		return x.Id
 	}
-	return nil
+	return 0
+}
+
+func (x *GetNewsByIdResponse) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *GetNewsByIdResponse) GetContent() string {
+	if x != nil {
+		return x.Content
+	}
+	return ""
+}
+
+func (x *GetNewsByIdResponse) GetViewCount() int64 {
+	if x != nil {
+		return x.ViewCount
+	}
+	return 0
+}
+
+func (x *GetNewsByIdResponse) GetCreateTime() int64 {
+	if x != nil {
+		return x.CreateTime
+	}
+	return 0
 }
 
 // 创建新闻请求
@@ -210,105 +242,26 @@ func (x *CreateNewsResponse) GetId() int32 {
 	return 0
 }
 
-// 新闻信息
-type News struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Content       string                 `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty"`
-	ViewCount     int64                  `protobuf:"varint,4,opt,name=view_count,json=viewCount,proto3" json:"view_count,omitempty"`
-	CreateTime    int64                  `protobuf:"varint,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *News) Reset() {
-	*x = News{}
-	mi := &file_api_news_v1_news_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *News) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*News) ProtoMessage() {}
-
-func (x *News) ProtoReflect() protoreflect.Message {
-	mi := &file_api_news_v1_news_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use News.ProtoReflect.Descriptor instead.
-func (*News) Descriptor() ([]byte, []int) {
-	return file_api_news_v1_news_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *News) GetId() int32 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *News) GetTitle() string {
-	if x != nil {
-		return x.Title
-	}
-	return ""
-}
-
-func (x *News) GetContent() string {
-	if x != nil {
-		return x.Content
-	}
-	return ""
-}
-
-func (x *News) GetViewCount() int64 {
-	if x != nil {
-		return x.ViewCount
-	}
-	return 0
-}
-
-func (x *News) GetCreateTime() int64 {
-	if x != nil {
-		return x.CreateTime
-	}
-	return 0
-}
-
 var File_api_news_v1_news_proto protoreflect.FileDescriptor
 
 const file_api_news_v1_news_proto_rawDesc = "" +
 	"\n" +
 	"\x16api/news/v1/news.proto\x12\vdemoservice\x1a\x1cgoogle/api/annotations.proto\"$\n" +
 	"\x12GetNewsByIdRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"<\n" +
-	"\x13GetNewsByIdResponse\x12%\n" +
-	"\x04news\x18\x01 \x01(\v2\x11.demoservice.NewsR\x04news\"C\n" +
-	"\x11CreateNewsRequest\x12\x14\n" +
-	"\x05title\x18\x01 \x01(\tR\x05title\x12\x18\n" +
-	"\acontent\x18\x02 \x01(\tR\acontent\"$\n" +
-	"\x12CreateNewsResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"\x86\x01\n" +
-	"\x04News\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"\x95\x01\n" +
+	"\x13GetNewsByIdResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x18\n" +
 	"\acontent\x18\x03 \x01(\tR\acontent\x12\x1d\n" +
 	"\n" +
 	"view_count\x18\x04 \x01(\x03R\tviewCount\x12\x1f\n" +
 	"\vcreate_time\x18\x05 \x01(\x03R\n" +
-	"createTime2\xd7\x01\n" +
+	"createTime\"C\n" +
+	"\x11CreateNewsRequest\x12\x14\n" +
+	"\x05title\x18\x01 \x01(\tR\x05title\x12\x18\n" +
+	"\acontent\x18\x02 \x01(\tR\acontent\"$\n" +
+	"\x12CreateNewsResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id2\xd7\x01\n" +
 	"\vNewsService\x12g\n" +
 	"\vGetNewsById\x12\x1f.demoservice.GetNewsByIdRequest\x1a .demoservice.GetNewsByIdResponse\"\x15\x82\xd3\xe4\x93\x02\x0f\x12\r/v1/news/{id}\x12_\n" +
 	"\n" +
@@ -327,25 +280,23 @@ func file_api_news_v1_news_proto_rawDescGZIP() []byte {
 	return file_api_news_v1_news_proto_rawDescData
 }
 
-var file_api_news_v1_news_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_api_news_v1_news_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_api_news_v1_news_proto_goTypes = []any{
 	(*GetNewsByIdRequest)(nil),  // 0: demoservice.GetNewsByIdRequest
 	(*GetNewsByIdResponse)(nil), // 1: demoservice.GetNewsByIdResponse
 	(*CreateNewsRequest)(nil),   // 2: demoservice.CreateNewsRequest
 	(*CreateNewsResponse)(nil),  // 3: demoservice.CreateNewsResponse
-	(*News)(nil),                // 4: demoservice.News
 }
 var file_api_news_v1_news_proto_depIdxs = []int32{
-	4, // 0: demoservice.GetNewsByIdResponse.news:type_name -> demoservice.News
-	0, // 1: demoservice.NewsService.GetNewsById:input_type -> demoservice.GetNewsByIdRequest
-	2, // 2: demoservice.NewsService.CreateNews:input_type -> demoservice.CreateNewsRequest
-	1, // 3: demoservice.NewsService.GetNewsById:output_type -> demoservice.GetNewsByIdResponse
-	3, // 4: demoservice.NewsService.CreateNews:output_type -> demoservice.CreateNewsResponse
-	3, // [3:5] is the sub-list for method output_type
-	1, // [1:3] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0, // 0: demoservice.NewsService.GetNewsById:input_type -> demoservice.GetNewsByIdRequest
+	2, // 1: demoservice.NewsService.CreateNews:input_type -> demoservice.CreateNewsRequest
+	1, // 2: demoservice.NewsService.GetNewsById:output_type -> demoservice.GetNewsByIdResponse
+	3, // 3: demoservice.NewsService.CreateNews:output_type -> demoservice.CreateNewsResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_api_news_v1_news_proto_init() }
@@ -359,7 +310,7 @@ func file_api_news_v1_news_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_news_v1_news_proto_rawDesc), len(file_api_news_v1_news_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
